@@ -165,7 +165,7 @@ class Review {
     }
 
 }
-//COMMENTING OUT THE INSTANCES AND EXAMPLES. MOST HAVE BEEN MOVED TO #3 BONUS.
+//COMMENTING OUT THE INSTANCES AND EXAMPLE CALLS. MOST HAVE BEEN MOVED TO #3 BONUS.
 
 // let neverwhere = new Book('Neverwhere', new Author('Neil Gaiman', ['Neverwhere']), 'Dark Horse');
 // neverwhere.getTitle();
@@ -198,6 +198,8 @@ class Review {
 
 
 //your code here...
+
+
 class Umbrella {
     #umbrellaName;
     #tagline;
@@ -262,7 +264,7 @@ class Company extends Umbrella {
 //Company Instances
 let tinyHats = new Company("Tim's Tiny Hat Emporium", 115, "Lendel Global");
 let discountClowns = new Company("Denny's Discount Clown Rental", 234, "Lendel Global");
-let businessHugs = new Company("Business Hugs, Ltd.", 110);
+let businessHugs = new Company("Business Hugs, Ltd.", 110, "Lendel Global");
 
 //Calling Company Methods
 tinyHats.shoutUmbrella();
@@ -335,14 +337,52 @@ class Employee extends Site {
     #companyName;
     #numEmployees;
     #umbrellaName;
+    #hired = true;
 
     constructor(empName, jobTitle, salary, siteLoc, companyName, numEmployees, umbrellaName) {
         super(siteLoc, companyName, numEmployees, umbrellaName)
         this.#empName = empName;
         this.#jobTitle = jobTitle;
         this.#salary = salary;
+        this.#siteLoc = siteLoc;
+        this.#companyName = companyName;
+        this.#numEmployees = numEmployees;
+    }
+
+    setHired(hiredBool) {
+        this.#hired = hiredBool;
+        { this.#hired === true ? console.log(`Welcome to ${this.#companyName}, ${this.#empName}. Your starting salary will be $${this.#salary}.`) : console.log(`${this.#empName}, you are no longer employed with ${this.#companyName}. Please make sure to pack up all of your belongings and turn in your badge before exiting the ${this.#siteLoc} office. Thank you and goodbye.`) }
+    }
+
+    setPromotion(newTitle, newSalary) {
+        this.#jobTitle = newTitle;
+        this.#salary = newSalary;
+
+        console.log(`Dear, ${this.#empName}, ${this.#companyName} has promoted you to ${this.#jobTitle}. Your new salary will be $${this.#salary}. Thank you for all your teamwork!`)
     }
 }
+
+//Employee Instances
+let timh = new Employee("Tim Heidecker", "CEO", 33000, "Phlugerville, TX", "Tim's Tiny Hat Emporium", 36, "Lendel Global");
+let billX = new Employee("Bill Xihong", "Manager", 39000, "Shanghai, China", "Tim's Tiny Hat Emporium", 38, "Lendel Global");
+let sarahk = new Employee("Sarah Knose", "Marketer", 35000, "Seattle, WA", "Tim's Tiny Hat Emporium", 37, "Lendel Global");
+
+let jond = new Employee("Jon Dep", "Engineer", 2244000, "Paris, France", "Business Hugs, Ltd.", 33, "Lendel Global");
+let billyc = new Employee("Billy Crystals", "HR Personnel", 1340000, "Los Angeles, CA", "Business Hugs, Ltd.", 42, "Lendel Global");
+let willp = new Employee("Will Pharrel", "Chief Lecturer on Hug Psychology", 1120000, "Los Angeles, CA", "Business Hugs, Ltd.", 42, "Lendel Global");
+let whoopsieg = new Employee("Whoopsie Golberg", "Engineer", 1549000, "Dallas, TX", "Business Hugs, Ltd.", 35, "Lendel Global");
+
+let drsteveb = new Employee("Dr. Steve Brule", "Financial Officer", 42000, "Dubai, India", "Denny's Discount Clown Rental", 113, "Lendel Global");
+let tairyg = new Employee("Tairy Greene", "Lawyer", 108000, "Raleigh, NC", "Denny's Discount Clown Rental", 52, "Lendel Global");
+let jamesq = new Employee("James Quall", "Janitor", 32000, "Norfolk, VA", "Denny's Discount Clown Rental", 69, "Lendel Global");
+
+//Calling employee Methods
+jamesq.setHired(false);
+sarahk.setHired(true);
+
+whoopsieg.setPromotion("Chief Spiritual Advisor", 1700000);
+tairyg.setPromotion("Legal Council Chairman", 1150000);
+
 
 /****************************************************************************************************************************************************************************************
 Bonus Exercise:
